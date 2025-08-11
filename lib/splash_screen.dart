@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:ingrade_io/screens/Auth%20Screens/LogIn_Screen.dart';
 import 'package:ingrade_io/screens/homescreens.dart';
 
 
@@ -13,7 +15,7 @@ class _SplashscreenState extends State<Splashscreen> {
   void initState(){
     super.initState();
     Future.delayed(const Duration(seconds: 2),(){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Homescreens()));
+      Get.to((() => LoginScreen()));
     });
   }
 

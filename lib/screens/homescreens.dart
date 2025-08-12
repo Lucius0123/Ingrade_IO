@@ -129,21 +129,24 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../Controller/Auth Controller.dart';
 import '../appcolors/appcolors.dart';
 import '../customappbar/bottomnavigationbar.dart';
 import '../customappbar/customappbar.dart';
 import 'course_screen.dart';
 
-class Homescreens extends StatefulWidget {
-  const Homescreens({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<Homescreens> createState() => _HomescreensState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomescreensState extends State<Homescreens> {
+class _HomeScreenState extends State<HomeScreen> {
 
   int currentIndex = 0;
+  final AuthController authController = Get.find<AuthController>();
 
   void onTabTapped(int index) {
     if (index == 1) {
@@ -163,6 +166,27 @@ class _HomescreensState extends State<Homescreens> {
   @override
   Widget build(BuildContext context) {
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    void _showLogoutDialog(BuildContext context) {
+      Get.dialog(
+        AlertDialog(
+          title: Text('Sign Out'),
+          content: Text('Are you sure you want to sign out?'),
+          actions: [
+            TextButton(
+              onPressed: () => Get.back(),
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                Get.back();
+                authController.signOut();
+              },
+              child: Text('Sign Out'),
+            ),
+          ],
+        ),
+      );
+    }
 
     return Scaffold(
       backgroundColor: Colors.white,

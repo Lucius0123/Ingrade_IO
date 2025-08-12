@@ -1,14 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:ingrade_io/customappbar/themecontroler.dart';
+import '../Controller/Auth Controller.dart';
 import '../appcolors/appcolors.dart';
 
 class CustomCourseAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize;
 
-  const CustomCourseAppBar({Key? key})
+  CustomCourseAppBar({Key? key})
       : preferredSize = const Size.fromHeight(80.0),
         super(key: key);
+  final AuthController authController = Get.find<AuthController>();
+  void _showLogoutDialog(BuildContext context) {
+    Get.dialog(
+      AlertDialog(
+        title: Text('Sign Out'),
+        content: Text('Are you sure you want to sign out?'),
+        actions: [
+          TextButton(
+            onPressed: () => Get.back(),
+            child: Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              Get.back();
+              authController.signOut();
+            },
+            child: Text('Sign Out'),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,12 +121,11 @@ class CustomCourseAppBar extends StatelessWidget implements PreferredSizeWidget 
             ),
 
             // User Avatar
-            GestureDetector(
-              onTap: () {},
-              child: Icon(
-                  size: 28,
-                  Icons.person_2_outlined, color: iconColor),
+            IconButton(
+              icon: Icon(Icons.person_2_outlined,size: 28,color: iconColor,),
+              onPressed: () => _showLogoutDialog(context),
             ),
+
           ],
         ),
       ),

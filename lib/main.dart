@@ -6,6 +6,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:ingrade_io/splash_screen.dart';
 
 import 'Controller/Auth Controller.dart';
+import 'Controller/Mock_data_controller.dart';
 import 'customappbar/themecontroler.dart';
 import 'firebase_options.dart';
 
@@ -16,6 +17,7 @@ void main() async {
   );
 
   Get.put(AuthController());
+  Get.put(CourseController());
   runApp( MyApp());
 }
 

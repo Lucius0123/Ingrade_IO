@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:ingrade_io/screens/Auth%20Screens/LogIn_Screen.dart';
 import 'dart:async';
 
-import 'package:ingrade_io/screens/homescreens.dart';
+import 'package:ingrade_io/screens/Home%20Screen/homescreens.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../screens/Auth Screens/email_verification_page.dart';

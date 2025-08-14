@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ingrade_io/screens/Auth%20Screens/LogIn_Screen.dart';
-import 'package:ingrade_io/screens/homescreens.dart';
+import 'package:ingrade_io/screens/Home%20Screen/homescreens.dart';
 
 import 'Controller/Auth Controller.dart';
 
